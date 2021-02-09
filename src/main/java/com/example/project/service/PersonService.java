@@ -11,21 +11,22 @@ import com.example.project.repository.PersonRepository;
 
 @Service
 public class PersonService {
-	
-	
-	public PersonService(Repository repository){
 
-		this.repo = repo;
 
-		}
 	@Autowired
 	private PersonRepository repo;
-	
-	public List<Person> findAll(){
-		return repo.findAll();
-		
+
+	public PersonService(PersonRepository personRepository){
+		this.repo = personRepository;
 	}
-	
+
+	public void salvar(Long id, String nome, String postagem){
+		repo.save(new Person(id,nome,postagem));
+	}
+
+	public List<Person> listPerson(){
+		return repo.findAll();
+	}
 	
 
 }
