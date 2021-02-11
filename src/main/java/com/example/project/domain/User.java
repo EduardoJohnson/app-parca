@@ -6,33 +6,33 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 
 
-@Document(collection = "personModel")
-public class Person implements Serializable{
+@Document(collection = "user")
+public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private Long id;
+	private Long cpf;
 	private String name;
-	private String post;
+	private String email;
 
-	public Person() {
+	public User() {
 
 	}
 
-	public Person(Long id, String name, String post) {
+	public User(Long cpf, String name, String post) {
 		super();
-		this.id = id;
+		this.cpf = cpf;
 		this.name = name;
-		this.post = post;
+		this.email = post;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getCpf() {
+		return cpf;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getName() {
@@ -43,13 +43,15 @@ public class Person implements Serializable{
 		this.name = name;
 	}
 
-	public String getPost() {
-		return post;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPost(String post) {
-		this.post = post;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+
 
 }
 
