@@ -1,7 +1,6 @@
 package com.example.project.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +27,20 @@ public class UserService {
 		return repo.findAll();
 	}
 	
-	public Optional<User> update(Long cpf,String name,String email){
-		return repo.findById(cpf);
+	public User update(Long cpf,String userName2,String userEmail2){
+		User recuperar = repo.findById(cpf).get();
+		
+		String userName = userName2;
+		String userEmail = userEmail2;
+		
+		recuperar.setName(userName);
+		recuperar.setEmail(userEmail);
+		 return recuperar;
+	}
+	
+	public User getCpf(Long cpf) {
+		return repo.findById(cpf).get();
+		
 	}
 	
 	public void delete(Long cpf) {

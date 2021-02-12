@@ -1,9 +1,6 @@
 package com.example.project.resource;
 
 import java.util.List;
-import java.util.Optional;
-
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,29 +21,34 @@ public class UserResource {
 		return service.listUser();
 	}
 
-	@PostMapping("/person")
-	public String save(@RequestParam(value = "cpf") Long cpf, @RequestParam(value = "name") String name,
-			@RequestParam(value = "email") String email) {
+	@PostMapping("/person/{cpf}/{name}/{email}")
+	public String save(@PathVariable(value = "cpf") Long cpf, @PathVariable(value = "name") String name,
+
+			@PathVariable(value = "email") String email) {
 
 		service.salvar(cpf, name, email);
 
 		return "Usuário criado com sucesso";
 	}
-	
-	@PutMapping("/person/{cpf}")
-		public Optional<User> update(@PathVariable(value="cpf") Long cpf,@RequestParam(value="name") String name) {
-			return service.update(cpf,name);
-			
+
+	@PostMapping(name = "/person/{cpf}/{name}/{email}")
+	public User update(@PathVariable(value = "cpf") Long cpf, @PathVariable(value = "name") String name,
+			@PathVariable(value = "email") String email) {
+
+		return service.update(cpf, name,email);
+
+	}
+
+	@GetMapping("/person/{cpf}")
+	public User teste(@PathVariable(value = "cpf") Long cpf) {
+
+		return service.getCpf(cpf);
 	}
 
 	@DeleteMapping("/person/{cpf}")
-		public void delete(@PathVariable(value="cpf" )Long cpf) {
-			service.delete(cpf);
-			
-			
-		
+	public void delete(@PathVariable(value = "cpf") Long cpf) {
+		service.delete(cpf);
+
 	}
 
-
 }
-
