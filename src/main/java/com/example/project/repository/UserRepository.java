@@ -7,6 +7,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.example.project.domain.User;
 
 @RepositoryRestResource(collectionResourceRel = "user", path = "user")
-public interface UserRepository extends MongoRepository<User, Long>{
+public interface UserRepository extends MongoRepository<User, String>{
 	
 }

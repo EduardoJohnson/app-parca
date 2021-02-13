@@ -21,33 +21,31 @@ public class UserResource {
 		return service.listUser();
 	}
 
-	@PostMapping("/person/{cpf}/{name}/{email}")
-	public String save(@PathVariable(value = "cpf") Long cpf, @PathVariable(value = "name") String name,
+	@PostMapping("/person")
+	public String save(@RequestBody User user) {
+		return service.save(user);
+		 
+		
 
-			@PathVariable(value = "email") String email) {
-
-		service.salvar(cpf, name, email);
-
-		return "Usuário criado com sucesso";
+	
 	}
 
-	@PostMapping(name = "/person/{cpf}/{name}/{email}")
-	public User update(@PathVariable(value = "cpf") Long cpf, @PathVariable(value = "name") String name,
-			@PathVariable(value = "email") String email) {
-
-		return service.update(cpf, name,email);
+	@PutMapping("/person/{id}")
+	public User att(@PathVariable(value = "id")String id, @RequestBody User user) {
+		
+	return service.update(id,user);
 
 	}
 
-	@GetMapping("/person/{cpf}")
-	public User teste(@PathVariable(value = "cpf") Long cpf) {
-
-		return service.getCpf(cpf);
+	@GetMapping("/person/{id}")
+	public User filter(@PathVariable(value = "id") String id) {
+		
+		return service.filterId(id);
 	}
 
-	@DeleteMapping("/person/{cpf}")
-	public void delete(@PathVariable(value = "cpf") Long cpf) {
-		service.delete(cpf);
+	@DeleteMapping("/person/{id}")
+	public void delete(@PathVariable(value = "id") String id) {
+		service.delete(id);
 
 	}
 

@@ -1,9 +1,11 @@
 package com.example.project.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.project.domain.User;
 import com.example.project.repository.UserRepository;
@@ -19,32 +21,33 @@ public class UserService {
 		this.repo = userRepository;
 	}
 
-	public void salvar(Long cpf, String name, String email){
-		repo.save(new User(cpf,name,email));
+	public String save(User user){
+	
+		repo.save(user);
+		return "inserido com felicidade";
 	}
 
 	public List<User> listUser(){
 		return repo.findAll();
 	}
 	
-	public User update(Long cpf,String userName2,String userEmail2){
-		User recuperar = repo.findById(cpf).get();
+	public User update(String id ,User user){
+		Optional<User> recuperar = repo.findById(id);
 		
-		String userName = userName2;
-		String userEmail = userEmail2;
+		return repo.save(user);
+
+		 	
+		 }
+	
+
+
+	public User filterId(String id) {
+		return repo.findById(id).get();
 		
-		recuperar.setName(userName);
-		recuperar.setEmail(userEmail);
-		 return recuperar;
 	}
 	
-	public User getCpf(Long cpf) {
-		return repo.findById(cpf).get();
-		
-	}
-	
-	public void delete(Long cpf) {
-		 repo.deleteById(cpf);
+	public void delete(String id) {
+		 repo.deleteById(id);
 	}
 	
 
