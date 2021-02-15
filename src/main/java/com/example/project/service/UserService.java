@@ -1,13 +1,14 @@
 package com.example.project.service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import com.example.project.domain.User;
+import com.example.project.dto.UserDto;
 import com.example.project.dto.UpdateUserRequestDto;
 import com.example.project.repository.UserRepository;
 
@@ -48,7 +49,8 @@ public class UserService {
 	
 
 
-	public User filterId(String id) {
+	public User filterId(String id,UserDto user) {
+	
 		return repo.findById(id).get();
 		
 	}

@@ -3,10 +3,17 @@ package com.example.project.resource;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.project.domain.User;
+import com.example.project.dto.UserDto;
 import com.example.project.dto.UpdateUserRequestDto;
 import com.example.project.service.UserService;
 
@@ -39,9 +46,9 @@ public class UserResource {
 	}
 
 	@GetMapping("/person/{id}")
-	public User filter(@PathVariable(value = "id") String id) {
+	public User filter(@PathVariable(value = "id") String id, UserDto user) {
 		
-		return service.filterId(id);
+		return service.filterId(id,user);
 	}
 
 	@DeleteMapping("/person/{id}")
