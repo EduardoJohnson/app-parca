@@ -46,9 +46,9 @@ public class UserResource {
 	}
 
 	@GetMapping("/person/{id}")
-	public User filter(@PathVariable(value = "id") String id, UserDto user) {
-		
-		return service.filterId(id,user);
+	public User filter(@PathVariable(value = "id") String id, User user) {
+	
+		return service.filterId(id);
 	}
 
 	@DeleteMapping("/person/{id}")

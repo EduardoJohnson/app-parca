@@ -2,18 +2,21 @@ package com.example.project.service;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.example.project.domain.User;
-import com.example.project.dto.UserDto;
 import com.example.project.dto.UpdateUserRequestDto;
+import com.example.project.dto.UserDto;
+
 import com.example.project.repository.UserRepository;
+
+import ma.glasnost.orika.MapperFacade;
 
 @Service
 public class UserService {
+	
+	
 
 
 	@Autowired
@@ -49,11 +52,11 @@ public class UserService {
 	
 
 
-	public User filterId(String id,UserDto user) {
+	public User filterId(String id) {
 	
-		return repo.findById(id).get();
-		
+	    return repo.findById(id).get();
 	}
+
 	
 	public void delete(String id) {
 		 repo.deleteById(id);

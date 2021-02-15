@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Document(collection = "user")
@@ -19,7 +19,6 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
-	@JsonIgnore
 	private Long cpf;
 	private String name;
 	private String email;
@@ -36,6 +35,7 @@ public class User implements Serializable{
 		this.name = name;
 		this.email = email;
 	}
+	
 
 	public String getId() {
 		return id;
