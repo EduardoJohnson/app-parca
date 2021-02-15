@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.project.domain.User;
+import com.example.project.dto.UpdateUserRequestDto;
 import com.example.project.repository.UserRepository;
 
 @Service
@@ -31,11 +32,17 @@ public class UserService {
 		return repo.findAll();
 	}
 	
-	public User update(String id ,User user){
-		Optional<User> recuperar = repo.findById(id);
+	public User update(String id ,UpdateUserRequestDto user){
 		
-		return repo.save(user);
-
+		Long cpf = user.getCpf();
+		String name = user.getName();
+		String email = user.getEmail();
+		
+		User recuperar = repo.findById(id).get();
+			recuperar.setCpf(cpf);
+			recuperar.setName(name);
+			recuperar.setEmail(email);
+		return repo.save(recuperar);
 		 	
 		 }
 	

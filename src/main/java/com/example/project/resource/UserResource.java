@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.project.domain.User;
+import com.example.project.dto.UpdateUserRequestDto;
 import com.example.project.service.UserService;
 
 @RestController
@@ -31,8 +32,8 @@ public class UserResource {
 	}
 
 	@PutMapping("/person/{id}")
-	public User att(@PathVariable(value = "id")String id, @RequestBody User user) {
-		
+	public User att(@PathVariable(value = "id")String id, @RequestBody UpdateUserRequestDto user) {
+	
 	return service.update(id,user);
 
 	}
