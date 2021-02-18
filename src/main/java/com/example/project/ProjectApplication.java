@@ -1,9 +1,10 @@
 package com.example.project;
 
-import com.example.project.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import com.example.project.repository.UserRepository;
 
 
 @EnableMongoRepositories(basePackageClasses = UserRepository.class)

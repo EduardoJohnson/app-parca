@@ -8,23 +8,23 @@ import org.springframework.stereotype.Service;
 import com.example.project.domain.User;
 import com.example.project.dto.UpdateUserRequestDto;
 import com.example.project.dto.UserDto;
-
+import com.example.project.map.UserMap;
 import com.example.project.repository.UserRepository;
-
-import ma.glasnost.orika.MapperFacade;
 
 @Service
 public class UserService {
-	
-	
 
+	@Autowired
+	private UserMap map;
 
 	@Autowired
 	private UserRepository repo;
 
-	public UserService(UserRepository userRepository){
+	public UserService(UserRepository userRepository,UserMap userMap){
 		this.repo = userRepository;
+		this.map = userMap;
 	}
+	
 
 	public String save(User user){
 	
@@ -53,8 +53,8 @@ public class UserService {
 
 
 	public User filterId(String id) {
-	
-	    return repo.findById(id).get();
+		User user = repo.findById(id).get();
+		return user;
 	}
 
 	

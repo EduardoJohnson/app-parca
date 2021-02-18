@@ -1,7 +1,6 @@
 package com.example.project.dto;
 
 
-import com.example.project.domain.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -20,9 +19,7 @@ public class UserDto {
 		this.name = name;
 		this.email = email;
 	}
-	public User teste(){
-	    return new User(id, cpf,name, email);
-	}
+
 
 
 	public void setId(String id) {
